@@ -5,47 +5,26 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Toy> toys = ToyFactory.createToys(32);
+        ArrayList<Toy> toys = ToyFactory.createToys(15);// в магазине 15 игрушек
         BoxToys toyInBox = new BoxToys(toys);
+        Toy addToy = new Toy(55, "Barby", 1); //добавили новую игрушку
+        toyInBox.addToys(addToy);
         ToyFactory.PrintToyBox(toys);
         LinkedList<Toy> prizeQueue = new LinkedList<>();
         int d = 7; //кол-во игроков
-        while (prizeQueue.size()<7){
+        while (prizeQueue.size() < 7){
             Toy toyWin = toyInBox.getRandomToy();
+
             if (toyWin.getFrequencyLevel() != 0) {
                 prizeQueue.add(toyWin);
             }
         }
-        if (prizeQueue.size() != 0) {
-            for (int i = 0; i < prizeQueue.size(); i++) {
+        while (prizeQueue.size() != 0) {
+
                 Toy takePrize = prizeQueue.removeFirst();
-                System.out.println(takePrize);
-                try (FileWriter writer = new FileWriter("Prizes.txt", true)) {
-                    // запись всей строки
-                    String text = takePrize.toString();
-                    writer.write(text);
-                    // запись по символам
-                    writer.append('\n');
-
-                    writer.flush();
-                } catch (IOException ex) {
-
-                    System.out.println(ex.getMessage());
-                }
+                WriterFile.Writer(takePrize);
             }
-        }
-        else{
-                System.out.println("Призы закончились !!!");
-            }
-
 
         }
 
     }
-
-
-
-
-
-
-

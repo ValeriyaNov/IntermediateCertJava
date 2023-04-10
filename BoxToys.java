@@ -25,7 +25,7 @@ public class BoxToys {
 
     public Toy getRandomToy() {
         Random rnd = new Random();
-        int numberPlay = 7; //задать в консоли потом
+        int numberPlay = 7; //задаем количество игроков
         int randomIndex = rnd.nextInt(toys.size());
 
         for (int i = 0; i < numberPlay; i++) {
@@ -34,14 +34,13 @@ public class BoxToys {
 
             if (i == randomIndex && freq!=0) {
 
-                System.out.println((Toy) toys.get(i));
+                //System.out.println((Toy) toys.get(i));
                 for (int j = 0; j < toys.size(); j++) {
                     if (toys.get(j).getToyName().equals(toys.get(i).getToyName())) {
                         toys.get(j).chanceFrequency();
                     }
                 }
                 return (Toy) toys.remove(i);
-                //добавить в текст файл
             }
         }
         Toy nullToy = new Toy(0, "null", 0);

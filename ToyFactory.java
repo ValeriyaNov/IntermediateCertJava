@@ -19,15 +19,17 @@ public class ToyFactory {
             String typeToy = typeToys.get(rnd.nextInt(5));
             int fr = 0;
             switch (typeToy){
-                case "Bear":
-                    fr = 3;
-                case "Cat", "Dog", "Fox":
-                     fr = 6;
-                case "Barby":
-                     fr = 1;
+                case "Bear" ->{
+                    fr = 3;}
+                case "Cat", "Dog", "Fox" ->{
+                     fr = 6;}
+                case "Barby" ->{
+                     fr = 1;}
             }
             Toy toy = new Toy(i, typeToy, fr);
             toyInBox.add(toy);
+            typeToy = "";
+            fr = 0;
 
         }
         return toyInBox;
