@@ -25,7 +25,7 @@ public class BoxToys {
 
     public Toy getRandomToy() {
         Random rnd = new Random();
-        int numberPlay = 5; //задать в консоли потом
+        int numberPlay = 7; //задать в консоли потом
         int randomIndex = rnd.nextInt(toys.size());
 
         for (int i = 0; i < numberPlay; i++) {
